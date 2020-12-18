@@ -1,18 +1,63 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/img/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    this is home page
   </div>
+  <input type="text" v-model="num">
+  <p>vuex中state定义的变量 ======> {{ num }}  changeValue ===>   {{changeValue}}</p>
+  <button @click="updateNum">修改变量</button>
+  <button @click="clickHandle">看孩子</button>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import mixin from '@/mixins/index.js'
+import { mapState, mapGetters ,mapMutations } from 'vuex'
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      inputValue: ''
+    }
+  },
+  computed: {
+    ...mapState([
+      'num'
+    ]),
+     ...mapGetters([
+      'changeValue'
+    ]),
+  },
+  mixins: [
+    mixin
+  ],
+  beforeRouteEnter(to, from, next) {
+    console.log("beforeRouteEnter");
+    next()
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log("beforeRouteUpdate");
+    next()
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log("beforeRouteLeave");
+    // const leave = window.confirm("are you sure leave ?")
+    // if (leave) {
+      next()
+    // }
+  },
+  methods: {
+    ...mapMutations([
+      'clickHandleBtn'
+    ]),
+    clickHandle() {
+      this.$router.push({
+        name: 'child',
+        params: {
+          user: '胡汉池'
+        }
+      })
+    },
+    updateNum() {
+      this.clickHandleBtn(99)
+    }
   }
 }
 </script>
