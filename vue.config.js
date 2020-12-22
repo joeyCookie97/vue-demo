@@ -10,7 +10,7 @@ module.exports = {
   // 打包时不生成.map文件
   productionSourceMap: false,
   // 处理跨域
-  devServer: {
-    proxy: ''
-  }
+  // devServer: {
+  //   proxy: ''
+  // }
 }

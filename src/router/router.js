@@ -8,15 +8,15 @@ const routes = [
     path: '/',
     name: 'Home',
     meta: {
-      title: "Home"
+      title: 'Home'
     },
     component: Home,
     beforeEnter: (to, from, next) => {
-      console.log("beforeEnter");
+      console.log('beforeEnter')
       if (from.name === 'login') {
-        console.log(" 这是从login page 来的")
-      } else if( from.name === 'About' ){
-        console.log(" 这是从about page 来的")
+        console.log(' 这是从login page 来的')
+      } else if (from.name === 'About') {
+        console.log(' 这是从about page 来的')
       }
       next()
     }
@@ -25,7 +25,7 @@ const routes = [
     path: '/about',
     name: 'About',
     meta: {
-      title: "About"
+      title: 'About'
     },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -43,6 +43,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/login.vue')
+  },
+  {
+    path: '/count',
+    name: 'count',
+    component: () => import('@/views/countToDemo.vue')
+  },
+  {
+    path: '/menu_page',
+    name: 'menu_page',
+    component: () => import('@/views/menu_page.vue')
   },
   {
     path: '/:pathMatch(.*)',

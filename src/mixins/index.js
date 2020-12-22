@@ -1,10 +1,10 @@
 export default {
-  data() {
+  data () {
     return {
-      msg: "我是mixins里面的msg"
+      msg: '我是mixins里面的msg'
     }
   },
-  mounted(){
+  mounted () {
     this.mixinsHello()
   },
   methods: {
